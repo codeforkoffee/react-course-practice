@@ -6,13 +6,27 @@ import './index.css'
 // component concerns 
 //  state, lifeCycle, UI
 class App extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            name: 'Hyojin'
+        }
+        this.updateName = this.updateName.bind(this)
+    }
+
+    updateName() {
+        this.setState({
+            name: 'Jyn'
+        })
+    }
     render() {
         return (
-        <div> 
-            Hello World! 
-        </div>
+        <React.Fragment> 
+            <h1> Hello, {this.state.name}</h1>
+            <button onClick={this.updateName}>Change Name</button>
+        </React.Fragment>
         )
-        // babel will compile the React jsx into regular old JS (creatElement) invocation,
+        // babel will compile the React jsx into regular old JS (creatElement) invocation/ ES6+ old browsers,
         //  so DOM can render
         
         // return React.createElement(
@@ -30,6 +44,6 @@ ReactDOM.render(
     <App />,
     // second: where to render to the Element to
     document.getElementById('app')
-    // Render the element App to
+    // when we render our App component ( line 8-24 ), we are rendering it to the element that has id called app (index.html)
    
 ) 

@@ -1,4 +1,5 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports= {
     // entry point of application
@@ -11,9 +12,14 @@ module.exports= {
     module: {
         rules: [
             // any js file (any js module inside application), go ahead and run babel-loader translation
-            { test:/\.(js)$/, user: 'babel-loader'},
-            { test:/\.css$/, user: ['style-loader', 'css-loader']}
+            { test:/\.(js)$/, use: 'babel-loader'},
+            { test:/\.css$/, use: ['style-loader', 'css-loader']}
         ]
     },
-    mode: 'development'
+    mode: 'development',
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: 'app/index.html'
+        })
+    ]
 }
